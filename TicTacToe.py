@@ -2,9 +2,10 @@
 John Morton
 Tic Tac Toe
 """
-
+import time
 import json
 import os
+from time import sleep
 
 # The characters used in the Tic-Tac-Too board.
 # These are constants and therefore should never have to change.
@@ -146,3 +147,14 @@ if game_done(board, message=False):
         os.remove("Modularization Design/gameplay.json")
     else:
         print("There was no saved game or this file does not exist. ")
+    time.sleep(1)
+    print("The game will close in 5 seconds. ")
+    time.sleep(1)
+    print("4")
+    time.sleep(1)
+    print("3")
+    time.sleep(1)
+    print("2")
+    time.sleep(1)
+    print("1")
+    time.sleep(1)
