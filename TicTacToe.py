@@ -7,16 +7,11 @@ import json
 import os
 from time import sleep
 
-# The characters used in the Tic-Tac-Too board.
-# These are constants and therefore should never have to change.
 X = 'X'
 O = 'O'
 BLANK = ' '
 
 
-# A blank Tic-Tac-Toe board. We should not need to change this board;
-# it is only used to reset the board to blank. This should be the format
-# of the code in the JSON file.
 blank_board = {  
             "board": [
                 BLANK, BLANK, BLANK,
@@ -26,7 +21,6 @@ blank_board = {
 
 def read_board(filename):
     '''Read the previously existing board from the file if it exists.'''
-    # Put file reading code here.
     try:
         boardfile = open(filename, "r")
         board = json.loads(boardfile.read())
@@ -36,7 +30,6 @@ def read_board(filename):
 
 def save_board(filename, board):
     '''Save the current game to a file.'''
-    # Put file writing code here.
     jsonboard = json.dumps(board)
     with open(filename, "w") as gamefile:
         gamefile.write(jsonboard)
@@ -45,18 +38,15 @@ def save_board(filename, board):
 
 def display_board(board):
     '''Display a Tic-Tac-Toe board on the screen in a user-friendly way.'''
-    # Put display code here.
     print(f" {board[0]} | {board[1]} | {board[2]} \n---+---+---\n {board[3]} | {board[4]} | {board[5]} \n---+---+---\n {board[6]} | {board[7]} | {board[8]} ")
 
 def is_x_turn(board):
-    '''Determine whose turn it is.'''
-    # Put code here determining if it is X's turn.
+    '''Determine whose turn it is by counting the number of X's compared to O's on the board currently.'''
     if board.count("X") < board.count("O") or board.count("X") == board.count("O"):
         return True
 
 def play_game(board):
     '''Play the game of Tic-Tac-Toe.'''
-    # Put game play code here. Return False when the user has indicated they are done.
 
     if is_x_turn(board):
         xmove = input("X> ")
@@ -114,7 +104,6 @@ def game_done(board, message=False):
 
     return False
 
-# These user-instructions are provided and do not need to be changed.
 print("Enter 'q' to suspend your game. Otherwise, enter a number from 1 to 9")
 print("where the following numbers correspond to the locations on the grid:")
 print(" 1 | 2 | 3 ")
@@ -124,14 +113,7 @@ print("---+---+---")
 print(" 7 | 8 | 9 \n")
 print("The current board is:\n")
 
-
-# The file read code, game loop code, and file close code goes here.
-
-
-
 board = read_board("Modularization Design/gameplay.json")
-
-
 
 while not game_done(board):
     display_board(board)
@@ -139,7 +121,6 @@ while not game_done(board):
         print("Game Saved! ")
         break
     
-
 if game_done(board, message=False):
     display_board(board)
     game_done(board, message=True)
